@@ -6,7 +6,7 @@
   <groupId>com.ragedunicorn.tools.maven</groupId>
   <artifactId>wago-release-example</artifactId>
   <packaging>jar</packaging>
-  <version>1.1.0</version>
+  <version>1.0.0</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Example project for Maven CurseForge release plugin</description>
