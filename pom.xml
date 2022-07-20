@@ -106,7 +106,6 @@
     </profile>
     <profile>
       <id>release-github-package</id>
-      <!-- override default distribution to ossrh -->
       <distributionManagement>
         <repository>
           <id>github</id>
