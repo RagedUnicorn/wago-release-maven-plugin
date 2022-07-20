@@ -1,6 +1,6 @@
 # Release
 
-> This document explains how a new release is created for sql-execute-maven-plugin
+> This document explains how a new release is created for wago-execute-maven-plugin
 
 * Remove snapshot from version for plugin and example then commit
 * Update `src/main/resources/release-notes.md` with changes
