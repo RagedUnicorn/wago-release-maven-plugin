@@ -36,9 +36,6 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.settings.Server;
 import org.apache.maven.settings.Settings;
 
-
-
-
 @Mojo(name = "wago-release")
 public class WagoReleaseMojo extends AbstractMojo {
 
@@ -67,6 +64,10 @@ public class WagoReleaseMojo extends AbstractMojo {
   // The retail supported version number
   @Parameter(property = "supportRetailPatch")
   private String supportedRetailPatch;
+
+  // The wotlkc supported version number
+  @Parameter(property = "supportWotlkcPatch")
+  private String supportedWotlkcPatch;
 
   // The bcc supported version number
   @Parameter(property = "supportBccPatch")
@@ -122,6 +123,7 @@ public class WagoReleaseMojo extends AbstractMojo {
     metadata.setSupportedRetailPatch(supportedRetailPatch);
     metadata.setSupportedBccPatch(supportedBccPatch);
     metadata.setSupportedClassicPatch(supportedClassicPatch);
+    metadata.setSupportedWotlkcPatch(supportedWotlkcPatch);
 
     releaseService.createReleaseOperation(metadata, file);
   }
@@ -215,6 +217,10 @@ public class WagoReleaseMojo extends AbstractMojo {
    */
   private Boolean hasValidSupportedVersion() {
     if (supportedRetailPatch != null && !supportedRetailPatch.isEmpty()) {
+      return true;
+    }
+
+    if (supportedWotlkcPatch != null && !supportedWotlkcPatch.isEmpty()) {
       return true;
     }
 

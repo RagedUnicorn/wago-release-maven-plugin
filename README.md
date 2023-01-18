@@ -26,6 +26,7 @@ Setup pom.xml in project
               <changelog>release description overwritten by release notes</changelog>
               <changelogFile>src/main/resources/release-notes-example.md</changelogFile>
                 <supportedRetailPatch>[game-version]</supportedRetailPatch>
+                <supportedWotlkcPatch>[game-version]</supportedWotlkcPatch>
                 <supportedBccPatch>[game-version]</supportedBccPatch>
                 <supportedClassicPatch>[game-version]</supportedClassicPatch>
               <stability>stable</stability>
@@ -41,7 +42,7 @@ Setup pom.xml in project
 </project>
 ```
 | Parameter             | Required | Default Value | Description                                                                                                                 |
-| --------------------- | -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| --------------------- | -------- | ------------- |-----------------------------------------------------------------------------------------------------------------------------|
 |                       |
 | projectId             | true     | <>            | The project id of the wago.io project (can be found on the developer dashboard)                                             |
 | server                | false    | <>            | References a server configuration in your .m2 settings.xml. This is the preferred way for using the generated wago.io token |
@@ -50,6 +51,7 @@ Setup pom.xml in project
 | changelog             | false    | <>            | A string containing the changelog                                                                                           |
 | changelogFile         | false    | <>            | Optional path to a changelog file - will override changelog                                                                 |
 | supportedRetailPatch  | false    | <>            | A number representing the retail supported version                                                                          |
+| supportedWotlkcPatch  | false    | <>            | A number representing the wotlkc supported version                                                                          |
 | supportedBccPatch     | false    | <>            | A number representing the burning crusade supported version                                                                 |
 | supportedClassicPatch | false    | <>            | A number representing the classic supported version                                                                         |
 | releaseType           | false    | release       | One of "stable", "beta", "alpha"                                                                                            |

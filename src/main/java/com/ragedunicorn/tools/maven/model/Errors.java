@@ -33,6 +33,8 @@ public class Errors {
   public List<String> stability = new ArrayList<>();
   @SerializedName(value = "supported_retail_patch")
   public List<String> supportedRetailPatch = new ArrayList<>();
+  @SerializedName(value = "supported_wotlk_patch")
+  public List<String> supportedWotlkcPatch = new ArrayList<>();
   @SerializedName(value = "supported_bc_patch")
   public List<String> supportedBccPatch = new ArrayList<>();
   @SerializedName(value = "supported_classic_patch")
@@ -70,6 +72,14 @@ public class Errors {
     this.supportedRetailPatch = supportedRetailPatch;
   }
 
+  public List<String> getSupportedWotlkcPatch() {
+    return supportedWotlkcPatch;
+  }
+
+  public void setSupportedWotlkcPatch(List<String> supportedWotlkcPatch) {
+    this.supportedWotlkcPatch = supportedWotlkcPatch;
+  }
+
   public List<String> getSupportedBccPatch() {
     return supportedBccPatch;
   }
@@ -100,13 +110,14 @@ public class Errors {
             && Objects.equals(file, errors.file)
             && Objects.equals(stability, errors.stability)
             && Objects.equals(supportedRetailPatch, errors.supportedRetailPatch)
+            && Objects.equals(supportedWotlkcPatch, errors.supportedWotlkcPatch)
             && Objects.equals(supportedBccPatch, errors.supportedBccPatch)
             && Objects.equals(supportedClassicPatch, errors.supportedClassicPatch);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, file, stability, supportedRetailPatch, supportedBccPatch, supportedClassicPatch);
+    return Objects.hash(metadata, file, stability, supportedRetailPatch, supportedWotlkcPatch, supportedBccPatch, supportedClassicPatch);
   }
 
   @Override
@@ -116,6 +127,7 @@ public class Errors {
             + ", file=" + file
             + ", stability=" + stability
             + ", supportedRetailPatch=" + supportedRetailPatch
+            + ", supportedWotlkcPatch=" + supportedWotlkcPatch
             + ", supportedBccPatch=" + supportedBccPatch
             + ", supportedClassicPatch=" + supportedClassicPatch
             + '}';
