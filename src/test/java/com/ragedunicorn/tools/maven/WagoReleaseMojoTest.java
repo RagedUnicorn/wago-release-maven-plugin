@@ -1,36 +1,42 @@
 package com.ragedunicorn.tools.maven;
 
-import org.apache.maven.plugin.testing.AbstractMojoTestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
+import org.apache.maven.plugin.testing.AbstractMojoTestCase;
+import org.apache.maven.plugin.testing.MojoRule;
+import org.junit.Rule;
+import org.junit.Test;
 
-public class WagoReleaseMojoTest extends AbstractMojoTestCase {
+public class WagoReleaseMojoTest {
 
-  public void setUp() throws Exception {
-    super.setUp();
-  }
+  @Rule
+  public MojoRule rule = new MojoRule();
 
-  public void tearDown() throws Exception {
-    super.tearDown();
-  }
-
-  /**
-   * Tests the proper discovery and configuration of the mojo.
-   *
-   * @throws Exception If failing to extract plugin configuration
-   */
-  public void testBasicPluginConfiguration() throws Exception {
-
-    File testPom = new File("src/test/resources/plugin-config.xml" );
-    assertNotNull(testPom);
+  @Test
+  public void configureMojo_validPluginConfig_wiresAllFields() throws Exception {
+    File testPom = new File(AbstractMojoTestCase.getBasedir(), "src/test/resources/plugin-config.xml");
     assertTrue(testPom.exists());
 
     WagoReleaseMojo mojo = new WagoReleaseMojo();
-    mojo = (WagoReleaseMojo) configureMojo(
-        mojo, extractPluginConfiguration("wago-release-maven-plugin", testPom)
+    mojo = (WagoReleaseMojo) rule.configureMojo(
+        mojo, rule.extractPluginConfiguration("wago-release-maven-plugin", testPom)
     );
 
     assertNotNull(mojo);
 
-    // mojo.execute(); execution requires wago backend
+    assertEquals("LvNAj96o", rule.getVariableValueFromObject(mojo, "projectId"));
+    assertEquals("example-upload", rule.getVariableValueFromObject(mojo, "label"));
+    assertEquals("release description overwritten by release notes",
+        rule.getVariableValueFromObject(mojo, "changelog"));
+    assertEquals("src/main/resources/release-notes-example.md",
+        rule.getVariableValueFromObject(mojo, "changelogFile"));
+    assertEquals("1.13.7", rule.getVariableValueFromObject(mojo, "supportedClassicPatch"));
+    assertEquals("stable", rule.getVariableValueFromObject(mojo, "stability"));
+    assertEquals("src/main/resources/asset-zip-example.zip",
+        rule.getVariableValueFromObject(mojo, "file"));
+    assertEquals("wago-token", rule.getVariableValueFromObject(mojo, "server"));
   }
 }
