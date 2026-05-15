@@ -266,12 +266,12 @@
           <dependency>
             <groupId>net.sourceforge.pmd</groupId>
             <artifactId>pmd-velocity</artifactId>
-            <version>7.17.0</version>
+            <version>7.24.0</version>
           </dependency>
           <dependency>
             <groupId>net.sourceforge.pmd</groupId>
             <artifactId>pmd-xml</artifactId>
-            <version>7.17.0</version>
+            <version>7.24.0</version>
           </dependency>
         </dependencies>
       </plugin>
