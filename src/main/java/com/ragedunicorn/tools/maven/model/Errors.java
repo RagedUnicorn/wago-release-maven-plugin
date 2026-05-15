@@ -117,7 +117,8 @@ public class Errors {
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, file, stability, supportedRetailPatch, supportedWotlkcPatch, supportedBccPatch, supportedClassicPatch);
+    return Objects.hash(metadata, file, stability, supportedRetailPatch,
+            supportedWotlkcPatch, supportedBccPatch, supportedClassicPatch);
   }
 
   @Override

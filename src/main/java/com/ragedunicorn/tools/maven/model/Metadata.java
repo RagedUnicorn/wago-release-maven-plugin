@@ -142,6 +142,7 @@ public class Metadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, stability, changelog, supportedRetailPatch, supportedWotlkcPatch, supportedBccPatch, supportedClassicPatch);
+    return Objects.hash(label, stability, changelog, supportedRetailPatch,
+            supportedWotlkcPatch, supportedBccPatch, supportedClassicPatch);
   }
 }
