@@ -25,7 +25,6 @@ package com.ragedunicorn.tools.maven.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ragedunicorn.tools.maven.WagoClient;
-import com.ragedunicorn.tools.maven.log.DefaultLog;
 import com.ragedunicorn.tools.maven.model.Metadata;
 import com.ragedunicorn.tools.maven.model.WagoApiClientError;
 import java.io.File;
@@ -41,12 +40,13 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ReleaseService {
   private static final String ENDPOINT = "/api/projects/:projectId/upload-file";
   private static final String SUCCESS_RESPONSE = "OK";
-
-  private final DefaultLog logger = new DefaultLog();
+  private static final Logger LOGGER = LoggerFactory.getLogger(ReleaseService.class);
 
   private final WagoClient wagoClient;
 
@@ -72,31 +72,23 @@ public class ReleaseService {
                     metadata.getLabel())
             .build();
 
-    CloseableHttpClient httpClient = wagoClient.getHttpClient();
-
     HttpPost httpPost = new HttpPost();
     URI preparedEndpointUrl = wagoClient.prepareEndpointUri(ENDPOINT);
-    if (logger.isDebugEnabled()) {
-      logger.debug("Endpoint Uri: " + preparedEndpointUrl.getPath());
+    if (LOGGER.isDebugEnabled()) {
+      LOGGER.debug("Endpoint Uri: {}", preparedEndpointUrl.getPath());
     }
     httpPost.setURI(preparedEndpointUrl);
     httpPost.setEntity(entity);
 
-    try {
-      CloseableHttpResponse response = httpClient.execute(httpPost);
+    try (CloseableHttpClient httpClient = wagoClient.getHttpClient();
+         CloseableHttpResponse response = httpClient.execute(httpPost)) {
       String responseString = responseHandler(response);
 
-      if (logger.isInfoEnabled() && responseString.equals(SUCCESS_RESPONSE)) {
-        logger.info("Upload successful");
+      if (SUCCESS_RESPONSE.equals(responseString)) {
+        LOGGER.info("Upload successful");
       }
     } catch (IOException e) {
       throw new MojoExecutionException("Upload to Wago.io failed", e);
-    }
-
-    try {
-      httpClient.close();
-    } catch (IOException e) {
-      throw new MojoExecutionException("Failed to close http client", e);
     }
   }
 
@@ -117,7 +109,7 @@ public class ReleaseService {
 
     if (statusCode != HttpStatus.SC_CREATED) {
       WagoApiClientError clientError = gson.fromJson(responseString, WagoApiClientError.class);
-      logger.error(clientError.toString());
+      LOGGER.error("{}", clientError);
 
       throw new MojoExecutionException("Failed to create release - reason: "
               + clientError);

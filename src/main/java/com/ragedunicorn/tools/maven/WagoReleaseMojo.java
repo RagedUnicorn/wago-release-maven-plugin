@@ -216,23 +216,10 @@ public class WagoReleaseMojo extends AbstractMojo {
    *      false if none of the versions is set
    */
   private Boolean hasValidSupportedVersion() {
-    if (supportedRetailPatch != null && !supportedRetailPatch.isEmpty()) {
-      return true;
-    }
-
-    if (supportedWotlkcPatch != null && !supportedWotlkcPatch.isEmpty()) {
-      return true;
-    }
-
-    if (supportedBccPatch != null && !supportedBccPatch.isEmpty()) {
-      return true;
-    }
-
-    if (supportedClassicPatch != null && !supportedClassicPatch.isEmpty()) {
-      return true;
-    }
-
-    return false;
+    return (supportedRetailPatch != null && !supportedRetailPatch.isEmpty())
+        || (supportedWotlkcPatch != null && !supportedWotlkcPatch.isEmpty())
+        || (supportedBccPatch != null && !supportedBccPatch.isEmpty())
+        || (supportedClassicPatch != null && !supportedClassicPatch.isEmpty());
   }
 
   /**
