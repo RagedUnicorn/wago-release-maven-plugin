@@ -10,5 +10,7 @@
 
 ## Build & Tooling
 
-* PMD upgraded to 7.24.0.
+* PMD upgraded to 7.25.0.
+* Checkstyle upgraded to 13.5.0.
+* `maven-plugin-api`, `maven-core` and `maven-compat` upgraded to 3.9.16.
 * README Maven Central badge link fixed.
