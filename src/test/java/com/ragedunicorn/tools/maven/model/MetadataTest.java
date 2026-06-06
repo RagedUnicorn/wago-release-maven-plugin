@@ -20,6 +20,8 @@ public class MetadataTest {
     metadata.setStability("stable");
     metadata.setChangelog("# Notes");
     metadata.setSupportedRetailPatch("10.2.0");
+    metadata.setSupportedMopPatch("5.5.0");
+    metadata.setSupportedCataPatch("4.4.0");
     metadata.setSupportedWotlkcPatch("3.4.3");
     metadata.setSupportedBccPatch("2.5.4");
     metadata.setSupportedClassicPatch("1.13.7");
@@ -39,6 +41,10 @@ public class MetadataTest {
 
     Assert.assertTrue("missing supported_retail_patch in: " + json,
         json.contains("\"supported_retail_patch\""));
+    Assert.assertTrue("missing supported_mop_patch in: " + json,
+        json.contains("\"supported_mop_patch\""));
+    Assert.assertTrue("missing supported_cata_patch in: " + json,
+        json.contains("\"supported_cata_patch\""));
     Assert.assertTrue("missing supported_wotlk_patch in: " + json,
         json.contains("\"supported_wotlk_patch\""));
     Assert.assertTrue("missing supported_bc_patch in: " + json,
@@ -48,6 +54,10 @@ public class MetadataTest {
 
     Assert.assertFalse("camelCase field name leaked into json: " + json,
         json.contains("supportedRetailPatch"));
+    Assert.assertFalse("camelCase field name leaked into json: " + json,
+        json.contains("supportedMopPatch"));
+    Assert.assertFalse("camelCase field name leaked into json: " + json,
+        json.contains("supportedCataPatch"));
     Assert.assertFalse("camelCase field name leaked into json: " + json,
         json.contains("supportedWotlkcPatch"));
     Assert.assertFalse("camelCase field name leaked into json: " + json,

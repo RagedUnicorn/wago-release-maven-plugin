@@ -33,6 +33,10 @@ public class Errors {
   public List<String> stability = new ArrayList<>();
   @SerializedName(value = "supported_retail_patch")
   public List<String> supportedRetailPatch = new ArrayList<>();
+  @SerializedName(value = "supported_mop_patch")
+  public List<String> supportedMopPatch = new ArrayList<>();
+  @SerializedName(value = "supported_cata_patch")
+  public List<String> supportedCataPatch = new ArrayList<>();
   @SerializedName(value = "supported_wotlk_patch")
   public List<String> supportedWotlkcPatch = new ArrayList<>();
   @SerializedName(value = "supported_bc_patch")
@@ -70,6 +74,22 @@ public class Errors {
 
   public void setSupportedRetailPatch(List<String> supportedRetailPatch) {
     this.supportedRetailPatch = supportedRetailPatch;
+  }
+
+  public List<String> getSupportedMopPatch() {
+    return supportedMopPatch;
+  }
+
+  public void setSupportedMopPatch(List<String> supportedMopPatch) {
+    this.supportedMopPatch = supportedMopPatch;
+  }
+
+  public List<String> getSupportedCataPatch() {
+    return supportedCataPatch;
+  }
+
+  public void setSupportedCataPatch(List<String> supportedCataPatch) {
+    this.supportedCataPatch = supportedCataPatch;
   }
 
   public List<String> getSupportedWotlkcPatch() {
@@ -110,6 +130,8 @@ public class Errors {
             && Objects.equals(file, errors.file)
             && Objects.equals(stability, errors.stability)
             && Objects.equals(supportedRetailPatch, errors.supportedRetailPatch)
+            && Objects.equals(supportedMopPatch, errors.supportedMopPatch)
+            && Objects.equals(supportedCataPatch, errors.supportedCataPatch)
             && Objects.equals(supportedWotlkcPatch, errors.supportedWotlkcPatch)
             && Objects.equals(supportedBccPatch, errors.supportedBccPatch)
             && Objects.equals(supportedClassicPatch, errors.supportedClassicPatch);
@@ -118,7 +140,8 @@ public class Errors {
   @Override
   public int hashCode() {
     return Objects.hash(metadata, file, stability, supportedRetailPatch,
-            supportedWotlkcPatch, supportedBccPatch, supportedClassicPatch);
+            supportedMopPatch, supportedCataPatch, supportedWotlkcPatch,
+            supportedBccPatch, supportedClassicPatch);
   }
 
   @Override
@@ -128,6 +151,8 @@ public class Errors {
             + ", file=" + file
             + ", stability=" + stability
             + ", supportedRetailPatch=" + supportedRetailPatch
+            + ", supportedMopPatch=" + supportedMopPatch
+            + ", supportedCataPatch=" + supportedCataPatch
             + ", supportedWotlkcPatch=" + supportedWotlkcPatch
             + ", supportedBccPatch=" + supportedBccPatch
             + ", supportedClassicPatch=" + supportedClassicPatch

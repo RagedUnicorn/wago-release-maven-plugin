@@ -42,8 +42,17 @@ public class Metadata {
   private String supportedRetailPatch;
 
   @Expose
+  @SerializedName(value = "supported_mop_patch")
+  private String supportedMopPatch;
+
+  @Expose
+  @SerializedName(value = "supported_cata_patch")
+  private String supportedCataPatch;
+
+  @Expose
   @SerializedName(value = "supported_wotlk_patch")
   private String supportedWotlkcPatch;
+
   @Expose
   @SerializedName(value = "supported_bc_patch")
   private String supportedBccPatch;
@@ -84,6 +93,22 @@ public class Metadata {
     this.supportedRetailPatch = supportedRetailPatch;
   }
 
+  public String getSupportedMopPatch() {
+    return supportedMopPatch;
+  }
+
+  public void setSupportedMopPatch(String supportedMopPatch) {
+    this.supportedMopPatch = supportedMopPatch;
+  }
+
+  public String getSupportedCataPatch() {
+    return supportedCataPatch;
+  }
+
+  public void setSupportedCataPatch(String supportedCataPatch) {
+    this.supportedCataPatch = supportedCataPatch;
+  }
+
   public String getSupportedWotlkcPatch() {
     return supportedWotlkcPatch;
   }
@@ -115,6 +140,8 @@ public class Metadata {
             + ", stability='" + stability + '\''
             + ", changelog='" + changelog + '\''
             + ", supportedRetailPatch='" + supportedRetailPatch + '\''
+            + ", supportedMopPatch='" + supportedMopPatch + '\''
+            + ", supportedCataPatch='" + supportedCataPatch + '\''
             + ", supportedWotlkcPatch='" + supportedWotlkcPatch + '\''
             + ", supportedBccPatch='" + supportedBccPatch + '\''
             + ", supportedClassicPatch='" + supportedClassicPatch + '\''
@@ -135,6 +162,8 @@ public class Metadata {
             && Objects.equals(stability, metadata.stability)
             && Objects.equals(changelog, metadata.changelog)
             && Objects.equals(supportedRetailPatch, metadata.supportedRetailPatch)
+            && Objects.equals(supportedMopPatch, metadata.supportedMopPatch)
+            && Objects.equals(supportedCataPatch, metadata.supportedCataPatch)
             && Objects.equals(supportedWotlkcPatch, metadata.supportedWotlkcPatch)
             && Objects.equals(supportedBccPatch, metadata.supportedBccPatch)
             && Objects.equals(supportedClassicPatch, metadata.supportedClassicPatch);
@@ -143,6 +172,7 @@ public class Metadata {
   @Override
   public int hashCode() {
     return Objects.hash(label, stability, changelog, supportedRetailPatch,
-            supportedWotlkcPatch, supportedBccPatch, supportedClassicPatch);
+            supportedMopPatch, supportedCataPatch, supportedWotlkcPatch,
+            supportedBccPatch, supportedClassicPatch);
   }
 }

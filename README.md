@@ -29,6 +29,8 @@ Setup pom.xml in project
               <changelog>release description overwritten by release notes</changelog>
               <changelogFile>src/main/resources/release-notes-example.md</changelogFile>
                 <supportedRetailPatch>[game-version]</supportedRetailPatch>
+                <supportedMopPatch>[game-version]</supportedMopPatch>
+                <supportedCataPatch>[game-version]</supportedCataPatch>
                 <supportedWotlkcPatch>[game-version]</supportedWotlkcPatch>
                 <supportedBccPatch>[game-version]</supportedBccPatch>
                 <supportedClassicPatch>[game-version]</supportedClassicPatch>
@@ -44,8 +46,9 @@ Setup pom.xml in project
   [...]
 </project>
 ```
+
 | Parameter             | Required | Default Value | Description                                                                                                                 |
-| --------------------- | -------- | ------------- |-----------------------------------------------------------------------------------------------------------------------------|
+|-----------------------|----------|---------------|-----------------------------------------------------------------------------------------------------------------------------|
 |                       |
 | projectId             | true     | <>            | The project id of the wago.io project (can be found on the developer dashboard)                                             |
 | server                | false    | <>            | References a server configuration in your .m2 settings.xml. This is the preferred way for using the generated wago.io token |
@@ -54,6 +57,8 @@ Setup pom.xml in project
 | changelog             | false    | <>            | A string containing the changelog                                                                                           |
 | changelogFile         | false    | <>            | Optional path to a changelog file - will override changelog                                                                 |
 | supportedRetailPatch  | false    | <>            | A number representing the retail supported version                                                                          |
+| supportedMopPatch     | false    | <>            | A number representing the mists of pandaria supported version                                                               |
+| supportedCataPatch    | false    | <>            | A number representing the cataclysm supported version                                                                       |
 | supportedWotlkcPatch  | false    | <>            | A number representing the wotlkc supported version                                                                          |
 | supportedBccPatch     | false    | <>            | A number representing the burning crusade supported version                                                                 |
 | supportedClassicPatch | false    | <>            | A number representing the classic supported version                                                                         |
@@ -67,9 +72,9 @@ mvn wago-release:wago-release
 ```
 
 
-## Setup Api Token
+## Set up Api Token
 
-Before the plugin can be used an API token has to be generated.
+Before the plugin can be used, an API token has to be generated.
 
 See Wago.io [documentation](https://addons.wago.io/account/apikeys)
    

@@ -59,11 +59,20 @@ public class WagoReleaseMojo extends AbstractMojo {
   @Parameter(property = "changelogFile")
   private String changelogFile;
 
-  // At least one of retail, classic or bcc patch must be set (multiple values allowed)
+  // At least one of retail, mop, cata, wotlkc, bcc or classic patch must be set
+  // (multiple values allowed)
 
   // The retail supported version number
   @Parameter(property = "supportRetailPatch")
   private String supportedRetailPatch;
+
+  // The mop (Mists of Pandaria) supported version number
+  @Parameter(property = "supportMopPatch")
+  private String supportedMopPatch;
+
+  // The cata (Cataclysm) supported version number
+  @Parameter(property = "supportCataPatch")
+  private String supportedCataPatch;
 
   // The wotlkc supported version number
   @Parameter(property = "supportWotlkcPatch")
@@ -121,9 +130,11 @@ public class WagoReleaseMojo extends AbstractMojo {
     metadata.setStability(stability);
     metadata.setChangelog(getChangelog());
     metadata.setSupportedRetailPatch(supportedRetailPatch);
+    metadata.setSupportedMopPatch(supportedMopPatch);
+    metadata.setSupportedCataPatch(supportedCataPatch);
+    metadata.setSupportedWotlkcPatch(supportedWotlkcPatch);
     metadata.setSupportedBccPatch(supportedBccPatch);
     metadata.setSupportedClassicPatch(supportedClassicPatch);
-    metadata.setSupportedWotlkcPatch(supportedWotlkcPatch);
 
     releaseService.createReleaseOperation(metadata, file);
   }
@@ -192,7 +203,8 @@ public class WagoReleaseMojo extends AbstractMojo {
 
     if (!hasValidSupportedVersion()) {
       throw new MojoExecutionException("Missing required parameter supported patch. One of "
-              + "supportedRetailPatch, supportedBccPatch or supportedClassicPatch has to be set");
+              + "supportedRetailPatch, supportedMopPatch, supportedCataPatch, "
+              + "supportedWotlkcPatch, supportedBccPatch or supportedClassicPatch has to be set");
     }
 
     if (label == null || label.isEmpty()) {
@@ -217,6 +229,8 @@ public class WagoReleaseMojo extends AbstractMojo {
    */
   private Boolean hasValidSupportedVersion() {
     return (supportedRetailPatch != null && !supportedRetailPatch.isEmpty())
+        || (supportedMopPatch != null && !supportedMopPatch.isEmpty())
+        || (supportedCataPatch != null && !supportedCataPatch.isEmpty())
         || (supportedWotlkcPatch != null && !supportedWotlkcPatch.isEmpty())
         || (supportedBccPatch != null && !supportedBccPatch.isEmpty())
         || (supportedClassicPatch != null && !supportedClassicPatch.isEmpty());

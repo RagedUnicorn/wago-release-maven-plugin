@@ -61,6 +61,8 @@
               <label>example-upload</label>
               <changelog>release description overwritten by release notes</changelog>
               <changelogFile>src/main/resources/release-notes-example.md</changelogFile>
+              <supportedMopPatch>5.5.0</supportedMopPatch>
+              <supportedCataPatch>4.4.0</supportedCataPatch>
               <supportedClassicPatch>1.13.7</supportedClassicPatch>
               <stability>stable</stability>
               <file>src/main/resources/asset-zip-example.zip</file>
