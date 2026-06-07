@@ -1,16 +1,9 @@
-# Wago Release Maven Plugin 2.1.0
+# Wago Release Maven Plugin 2.1.1
 
-## Features
+## Bugfixes
 
-* Added support for **Mists of Pandaria** and **Cataclysm** patch versions via the new
-  `supportMopPatch` and `supportCataPatch` parameters. At least one of `supportedRetailPatch`,
-  `supportedMopPatch`, `supportedCataPatch`, `supportedWotlkcPatch`, `supportedBccPatch` or
-  `supportedClassicPatch` must now be set. The serialized metadata gains `supported_mop_patch`
-  and `supported_cata_patch` fields.
-
-## Build & Tooling
-
-* PMD upgraded to 7.25.0.
-* Checkstyle upgraded to 13.5.0.
-* `maven-plugin-api`, `maven-core` and `maven-compat` upgraded to 3.9.16.
-* README Maven Central badge link fixed.
+* Fixed a `NoClassDefFoundError: com/google/common/collect/Lists` at execution time. The plugin
+  referenced Guava but never declared it as a dependency, so it was only resolved transitively
+  through the `provided`-scope Maven core at compile time and was absent from the plugin's runtime
+  class realm. The single Guava usage was replaced with a JDK equivalent, removing the dependency
+  entirely. Affected releases: 2.1.0.
