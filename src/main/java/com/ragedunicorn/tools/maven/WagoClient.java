@@ -22,9 +22,9 @@
 
 package com.ragedunicorn.tools.maven;
 
-import com.google.common.collect.Lists;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.List;
 import org.apache.http.Header;
 import org.apache.http.HttpHeaders;
@@ -84,11 +84,10 @@ public class WagoClient {
   }
 
   private List<Header> getDefaultHeaders() {
-    return Lists.newArrayList(
+    return Arrays.asList(
             new BasicHeader(HttpHeaders.USER_AGENT, USER_AGENT),
             new BasicHeader("Authorization", "Bearer " + token),
             new BasicHeader(HttpHeaders.ACCEPT, "application/json")
-
     );
   }
 
