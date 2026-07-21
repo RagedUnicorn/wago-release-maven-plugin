@@ -6,6 +6,7 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.ragedunicorn.tools.maven/wago-release-maven-plugin?label=Maven%20Central)](https://central.sonatype.com/artifact/com.ragedunicorn.tools.maven/wago-release-maven-plugin)
 [![Renovate enabled](docs/renovate-badge.svg)](https://renovatebot.com)
+[![CI](https://github.com/RagedUnicorn/wago-release-maven-plugin/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/RagedUnicorn/wago-release-maven-plugin/actions/workflows/ci.yaml)
 
 ## Usage
 
