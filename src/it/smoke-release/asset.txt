@@ -1,0 +1,1 @@
+Dummy addon asset for the invoker smoke test. The upload never reaches Wago.io.

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ragedunicorn.tools.maven.it</groupId>
+  <artifactId>smoke-release</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <description>
+    Executes the wago-release goal with the upload routed to an unroutable local proxy
+    (see invoker.properties). The goal must survive HTTP client construction - the point
+    where provided-transitive classes missing from the plugin's runtime ClassRealm surface
+    as NoClassDefFoundError - and may only fail afterwards, at the network call.
+    verify.groovy asserts exactly that.
+  </description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.ragedunicorn.tools.maven</groupId>
+        <artifactId>wago-release-maven-plugin</artifactId>
+        <version>@project.version@</version>
+        <configuration>
+          <projectId>smoke-release</projectId>
+          <label>smoke-test-upload</label>
+          <changelogFile>changelog.md</changelogFile>
+          <supportedClassicPatch>1.15.7</supportedClassicPatch>
+          <stability>stable</stability>
+          <file>asset.txt</file>
+          <authToken>smoke-test-token</authToken>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
