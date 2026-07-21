@@ -6,7 +6,7 @@
   <groupId>com.ragedunicorn.tools.maven</groupId>
   <artifactId>wago-release-example</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.2-SNAPSHOT</version>
+  <version>2.1.2</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Example project for Maven CurseForge release plugin</description>
@@ -52,7 +52,7 @@
       <plugin>
         <groupId>com.ragedunicorn.tools.maven</groupId>
         <artifactId>wago-release-maven-plugin</artifactId>
-        <version>2.1.2-SNAPSHOT</version>
+        <version>2.1.2</version>
         <executions>
           <execution>
             <id>default-cli</id>
@@ -80,7 +80,7 @@
     <dependency>
       <groupId>com.ragedunicorn.tools.maven</groupId>
       <artifactId>wago-release-maven-plugin</artifactId>
-      <version>2.1.2-SNAPSHOT</version>
+      <version>2.1.2</version>
     </dependency>
   </dependencies>
   -->
