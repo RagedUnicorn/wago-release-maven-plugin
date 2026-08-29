@@ -1,6 +1,6 @@
 # wago-release-maven-plugin
 
-![](./docs/wago_release_maven_plugin.png)
+![](./docs/wago_release_maven_plugin_banner.svg)
 
 > A maven plugin for creating Wago.io mods/addons releases
 
