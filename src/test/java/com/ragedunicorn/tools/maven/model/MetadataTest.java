@@ -24,6 +24,7 @@ public class MetadataTest {
     metadata.setSupportedCataPatch("4.4.0");
     metadata.setSupportedWotlkcPatch("3.4.3");
     metadata.setSupportedBccPatch("2.5.4");
+    metadata.setSupportedForeverPatch("1.60.1");
     metadata.setSupportedClassicPatch("1.13.7");
   }
 
@@ -49,6 +50,8 @@ public class MetadataTest {
         json.contains("\"supported_wotlk_patch\""));
     Assert.assertTrue("missing supported_bc_patch in: " + json,
         json.contains("\"supported_bc_patch\""));
+    Assert.assertTrue("missing supported_forever_patch in: " + json,
+        json.contains("\"supported_forever_patch\":\"1.60.1\""));
     Assert.assertTrue("missing supported_classic_patch in: " + json,
         json.contains("\"supported_classic_patch\""));
 
@@ -62,6 +65,8 @@ public class MetadataTest {
         json.contains("supportedWotlkcPatch"));
     Assert.assertFalse("camelCase field name leaked into json: " + json,
         json.contains("supportedBccPatch"));
+    Assert.assertFalse("camelCase field name leaked into json: " + json,
+        json.contains("supportedForeverPatch"));
     Assert.assertFalse("camelCase field name leaked into json: " + json,
         json.contains("supportedClassicPatch"));
   }

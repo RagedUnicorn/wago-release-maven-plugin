@@ -34,6 +34,7 @@ Setup pom.xml in project
                 <supportedCataPatch>[game-version]</supportedCataPatch>
                 <supportedWotlkcPatch>[game-version]</supportedWotlkcPatch>
                 <supportedBccPatch>[game-version]</supportedBccPatch>
+                <supportedForeverPatch>[game-version]</supportedForeverPatch>
                 <supportedClassicPatch>[game-version]</supportedClassicPatch>
               <stability>stable</stability>
               <file>[path-to-packaged-addon]</file>
@@ -62,6 +63,7 @@ Setup pom.xml in project
 | supportedCataPatch    | false    | <>            | A number representing the cataclysm supported version                                                                       |
 | supportedWotlkcPatch  | false    | <>            | A number representing the wotlkc supported version                                                                          |
 | supportedBccPatch     | false    | <>            | A number representing the burning crusade supported version                                                                 |
+| supportedForeverPatch | false    | <>            | A number representing the world of warcraft: forever supported version                                                      |
 | supportedClassicPatch | false    | <>            | A number representing the classic supported version                                                                         |
 | releaseType           | false    | release       | One of "stable", "beta", "alpha"                                                                                            |
 | file                  | true     | <>            | The path to the addon to upload                                                                                             |

@@ -37,6 +37,7 @@ import org.apache.maven.settings.Server;
 import org.apache.maven.settings.Settings;
 
 @Mojo(name = "wago-release")
+@SuppressWarnings("PMD.TooManyFields")
 public class WagoReleaseMojo extends AbstractMojo {
 
   // The project id of the wago project (can be found on the projects page)
@@ -59,7 +60,7 @@ public class WagoReleaseMojo extends AbstractMojo {
   @Parameter(property = "changelogFile")
   private String changelogFile;
 
-  // At least one of retail, mop, cata, wotlkc, bcc or classic patch must be set
+  // At least one of retail, mop, cata, wotlkc, bcc, forever or classic patch must be set
   // (multiple values allowed)
 
   // The retail supported version number
@@ -81,6 +82,10 @@ public class WagoReleaseMojo extends AbstractMojo {
   // The bcc supported version number
   @Parameter(property = "supportBccPatch")
   private String supportedBccPatch;
+
+  // The forever (World of Warcraft: Forever) supported version number
+  @Parameter(property = "supportForeverPatch")
+  private String supportedForeverPatch;
 
   // The classic supported version number
   @Parameter(property = "supportClassicPatch")
@@ -134,6 +139,7 @@ public class WagoReleaseMojo extends AbstractMojo {
     metadata.setSupportedCataPatch(supportedCataPatch);
     metadata.setSupportedWotlkcPatch(supportedWotlkcPatch);
     metadata.setSupportedBccPatch(supportedBccPatch);
+    metadata.setSupportedForeverPatch(supportedForeverPatch);
     metadata.setSupportedClassicPatch(supportedClassicPatch);
 
     releaseService.createReleaseOperation(metadata, file);
@@ -204,7 +210,8 @@ public class WagoReleaseMojo extends AbstractMojo {
     if (!hasValidSupportedVersion()) {
       throw new MojoExecutionException("Missing required parameter supported patch. One of "
               + "supportedRetailPatch, supportedMopPatch, supportedCataPatch, "
-              + "supportedWotlkcPatch, supportedBccPatch or supportedClassicPatch has to be set");
+              + "supportedWotlkcPatch, supportedBccPatch, supportedForeverPatch or "
+              + "supportedClassicPatch has to be set");
     }
 
     if (label == null || label.isEmpty()) {
@@ -233,6 +240,7 @@ public class WagoReleaseMojo extends AbstractMojo {
         || (supportedCataPatch != null && !supportedCataPatch.isEmpty())
         || (supportedWotlkcPatch != null && !supportedWotlkcPatch.isEmpty())
         || (supportedBccPatch != null && !supportedBccPatch.isEmpty())
+        || (supportedForeverPatch != null && !supportedForeverPatch.isEmpty())
         || (supportedClassicPatch != null && !supportedClassicPatch.isEmpty());
   }
 

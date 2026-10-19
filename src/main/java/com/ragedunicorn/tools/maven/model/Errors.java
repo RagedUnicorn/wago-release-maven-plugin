@@ -41,6 +41,8 @@ public class Errors {
   public List<String> supportedWotlkcPatch = new ArrayList<>();
   @SerializedName(value = "supported_bc_patch")
   public List<String> supportedBccPatch = new ArrayList<>();
+  @SerializedName(value = "supported_forever_patch")
+  public List<String> supportedForeverPatch = new ArrayList<>();
   @SerializedName(value = "supported_classic_patch")
   public List<String> supportedClassicPatch = new ArrayList<>();
 
@@ -108,6 +110,14 @@ public class Errors {
     this.supportedBccPatch = supportedBccPatch;
   }
 
+  public List<String> getSupportedForeverPatch() {
+    return supportedForeverPatch;
+  }
+
+  public void setSupportedForeverPatch(List<String> supportedForeverPatch) {
+    this.supportedForeverPatch = supportedForeverPatch;
+  }
+
   public List<String> getSupportedClassicPatch() {
     return supportedClassicPatch;
   }
@@ -134,6 +144,7 @@ public class Errors {
             && Objects.equals(supportedCataPatch, errors.supportedCataPatch)
             && Objects.equals(supportedWotlkcPatch, errors.supportedWotlkcPatch)
             && Objects.equals(supportedBccPatch, errors.supportedBccPatch)
+            && Objects.equals(supportedForeverPatch, errors.supportedForeverPatch)
             && Objects.equals(supportedClassicPatch, errors.supportedClassicPatch);
   }
 
@@ -141,7 +152,7 @@ public class Errors {
   public int hashCode() {
     return Objects.hash(metadata, file, stability, supportedRetailPatch,
             supportedMopPatch, supportedCataPatch, supportedWotlkcPatch,
-            supportedBccPatch, supportedClassicPatch);
+            supportedBccPatch, supportedForeverPatch, supportedClassicPatch);
   }
 
   @Override
@@ -155,6 +166,7 @@ public class Errors {
             + ", supportedCataPatch=" + supportedCataPatch
             + ", supportedWotlkcPatch=" + supportedWotlkcPatch
             + ", supportedBccPatch=" + supportedBccPatch
+            + ", supportedForeverPatch=" + supportedForeverPatch
             + ", supportedClassicPatch=" + supportedClassicPatch
             + '}';
   }
